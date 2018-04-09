@@ -7,8 +7,8 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np
 
-df_3_2018 = pd.DataFrame.from_csv("productivity_month/3_2018/RescueTime_Report_Productivity__by_day__Mon_Fri_6am_8pm__2018-03-01.csv")
-df_4_2018 = pd.DataFrame.from_csv("productivity_month/4_2018/RescueTime_Report_Productivity__by_day__Mon_Fri_6am_8pm__2018-04-01.csv")
+df_3_2018 = pd.DataFrame.from_csv("../productivity_month/3_2018/RescueTime_Report_Productivity__by_day_2018-03-01.csv")
+df_4_2018 = pd.DataFrame.from_csv("../productivity_month/4_2018/RescueTime_Report_Productivity__by_day_2018-04-01.csv")
 
 df = pd.concat([df_3_2018, df_4_2018], axis=0, join="inner")
 
@@ -24,7 +24,7 @@ for index, value in enumerate(new_date):
     md.append("{:%m-%d}".format(value, "%Y-%m-%d"))
     productivity.append(productive_days.iloc[index]/60)
 
-weekday_dict = {"Monday": "b", "Tuesday": "r", "Wednesday" : "y", "Thursday" : "g", "Friday" : "k"}
+weekday_dict = {"Sunday": "c", "Monday": "b", "Tuesday": "r", "Wednesday" : "y", "Thursday" : "g", "Friday" : "k", "Saturday": "m"}
 
 fig = plt.figure()
 ax = fig.add_subplot(111)
@@ -41,6 +41,6 @@ handles, labels = plt.gca().get_legend_handles_labels()
 by_label = OrderedDict(zip(labels, handles))
 plt.legend(by_label.values(), by_label.keys(), loc=4)
 
-plt.savefig("images/MFproductivity.png")
+plt.savefig("../images/daily_productivity.png")
 plt.close()
 
