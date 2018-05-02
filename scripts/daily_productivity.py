@@ -5,7 +5,10 @@ import calendar
 
 import pandas as pd
 import matplotlib.pyplot as plt
+import matplotlib as mpl
 import numpy as np
+
+#mpl.use("TkAgg")
 
 df_3_2018 = pd.DataFrame.from_csv("../productivity_month/3_2018/RescueTime_Report_Productivity__by_day_2018-03-01.csv")
 df_4_2018 = pd.DataFrame.from_csv("../productivity_month/4_2018/RescueTime_Report_Productivity__by_day_2018-04-01.csv")
@@ -35,7 +38,6 @@ plt.xticks(rotation=45)
 ax.set_ylabel("Minutes")
 ax.set_xlabel("Day")
 plt.title("Minutes spent on productive tasks")
-
 
 handles, labels = plt.gca().get_legend_handles_labels()
 by_label = OrderedDict(zip(labels, handles))
